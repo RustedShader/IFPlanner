@@ -1,0 +1,479 @@
+@page "/flight-plan"
+
+
+<PageTitle>Flight Plan</PageTitle>
+<script>window.Clipboard = (function(window, document, navigator) {
+        var textArea,
+            copy;
+
+        function isOS() {
+            return navigator.userAgent.match(/ipad|iphone/i);
+        }
+
+        function createTextArea(text) {
+            textArea = document.createElement('textArea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+        }
+
+        function selectText() {
+            var range,
+                selection;
+
+            if (isOS()) {
+                range = document.createRange();
+                range.selectNodeContents(textArea);
+                selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                textArea.setSelectionRange(0, 999999);
+            } else {
+                textArea.select();
+            }
+        }
+
+        function copyToClipboard() {
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+
+        copy = function(text) {
+            createTextArea(text);
+            selectText();
+            copyToClipboard();
+        };
+
+        return {
+            copy: copy
+        };
+    })(window, document, navigator);
+</script>
+
+
+@if (_isInitialized != true)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    @if (_generalParameters != null && _originParameters != null && _destinationParameters != null && _weightParameters != null)
+    {
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+            <strong>Flight Plans</strong>
+        </RadzenText>
+        <br/>
+        <!-- Flight Plans section -->
+        <RadzenCard>
+            <RadzenRow>
+                <RadzenColumn SizeMD="4">
+                    <RadzenText TextStyle="TextStyle.Overline">
+                        <b>Flight Plan Degree Minutes</b>
+                    </RadzenText>
+                    <br/>
+                    <RadzenTextArea Disabled="true" @bind-Value="@_flightPlan" Style="resize: none; height: 150px; font-family: monospace;"/>
+                    <br/>
+                    <RadzenButton Click="@( () => CopyToClipboard(@_flightPlan))" Style="vertical-align: bottom">Copy</RadzenButton>
+                </RadzenColumn>
+                <RadzenColumn SizeMD="4">
+                    <RadzenText TextStyle="TextStyle.Overline">
+                        <b>Flight Plan Full</b>
+                    </RadzenText>
+                    <br/>
+                    <RadzenTextArea Disabled="true" @bind-Value="@_flightPlanFixes" Style="resize: none; height: 150px; font-family: monospace;"/>
+                    <br/>
+                    <RadzenButton Click="@( () => CopyToClipboard(@_flightPlanFixes))" Style="vertical-align: bottom">Copy</RadzenButton>
+                </RadzenColumn>
+                <RadzenColumn SizeMD="4">
+                    <RadzenText TextStyle="TextStyle.Overline">
+                        <b>Flight Plan Short</b>
+                    </RadzenText>
+                    <br/>
+                    <RadzenTextArea Disabled="true" @bind-Value="@_flightPlanShort" Style="resize: none; height: 150px; font-family: monospace;"/>
+                    <br/>
+                    <RadzenButton Click="@( () => CopyToClipboard(_flightPlanShort))" Style="vertical-align: bottom">Copy</RadzenButton>
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+        <br/>
+
+        <!-- Origin and Destination Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Origin Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_originParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="OriginParameters" Property="Name" Title="Airport"/>
+                    <RadzenDataGridColumn TItem="OriginParameters" Property="IcaoCode" Title="ICAO"/>
+                    <RadzenDataGridColumn TItem="OriginParameters" Property="PlanRwy" Title="Planned Runway"/>
+                    <RadzenDataGridColumn TItem="OriginParameters" Property="Elevation" Title="Elevation"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Destination Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_destinationParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="DestinationParameters" Property="Name" Title="Airport"/>
+                    <RadzenDataGridColumn TItem="DestinationParameters" Property="IcaoCode" Title="ICAO"/>
+                    <RadzenDataGridColumn TItem="DestinationParameters" Property="PlanRwy" Title="Planned Runway"/>
+                    <RadzenDataGridColumn TItem="DestinationParameters" Property="Elevation" Title="Elevation"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+        <!-- Flight Gates -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Flight Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_generalParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="ClimbProfile" Title="Climb Profile"/>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="DescentProfile" Title="Descent Profile"/>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="CruiseProfile" Title="Cruise Profile"/>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="CruiseMach" Title="Cruise Speed (Mach)"/>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="InitialAltitude" Title="Planned Altitude (Ft)"/>
+                    <RadzenDataGridColumn TItem="GeneralParameters" Property="RouteDistance" Title="Route Distance (Nm)"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+        
+        <!-- Airport Gates -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: medium">Airport Gates</RadzenText>
+        <RadzenCard Variant="Variant.Outlined">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Start" Gap="1rem">
+                <RadzenIcon Icon="info" Style="font-size: 2rem; margin-top: 0.25rem;" />
+                <RadzenStack Gap="0.5rem" Style="flex-grow: 1;">
+                    <RadzenText TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; margin-bottom: 0;">
+                        Expert Server Gate Assignment
+                    </RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body2" Style="margin-bottom: 1rem;">
+                        Please use assigned gates when operating on the Expert Server.
+                    </RadzenText>
+                    <RadzenCard Style="padding: 1rem; margin-top: 0.5rem;">
+                        <RadzenRow>
+                            @{
+                            var gateLinkOrigin = $"https://www.ifatc.org/gates?code={_originParameters.FirstOrDefault()?.IcaoCode}";
+                            var gateLinkArrival = $"https://www.ifatc.org/gates?code={_destinationParameters.FirstOrDefault()?.IcaoCode}";
+                            }
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Departure Gates</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@gateLinkOrigin">View Departure Gates</RadzenLink>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Arrival Gates</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@gateLinkArrival">View Arrival Gates</RadzenLink>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenCard>
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenCard>
+        <br/>
+        <!-- Charts Fox -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Chart Fox</RadzenText>
+        <RadzenCard Variant="Variant.Outlined">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Start" Gap="1rem">
+                <RadzenIcon Icon="map" Style="font-size: 2rem; margin-top: 0.25rem;" />
+                <RadzenStack Gap="0.5rem" Style="flex-grow: 1;">
+                    <RadzenText TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; margin-bottom: 0;">
+                        Airport Charts
+                    </RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body2" Style="margin-bottom: 1rem;">
+                        View all the charts on ChartFox by clicking the links below!
+                    </RadzenText>
+                    <RadzenCard Style="padding: 1rem; margin-top: 0.5rem;">
+                        <RadzenRow>
+                            @{
+                                var chartFoxOriginUrl = $"https://chartfox.org/{_originParameters.FirstOrDefault()?.IcaoCode}";
+                                var chartFoxArrivalUrl = $"https://chartfox.org/{_destinationParameters.FirstOrDefault()?.IcaoCode}";
+                            }
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Departure Charts</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@chartFoxOriginUrl">View Departure Charts</RadzenLink>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Arrival Charts</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@chartFoxArrivalUrl">View Arrival Charts</RadzenLink>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenCard>
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenCard>
+
+        <br/>
+
+        <!-- Sky Vector -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Sky Vector</RadzenText>
+        <RadzenCard Variant="Variant.Outlined">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Start" Gap="1rem">
+                <RadzenIcon Icon="flight" Style="font-size: 2rem; margin-top: 0.25rem;" />
+                <RadzenStack Gap="0.5rem" Style="flex-grow: 1;">
+                    <RadzenText TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; margin-bottom: 0;">
+                        Sky Vector
+                    </RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body2" Style="margin-bottom: 1rem;">
+                        View route and charts on Sky Vector. Charts PDF Only Available for U.S Airports.
+                    </RadzenText>
+                    <RadzenAlert AlertStyle="AlertStyle.Warning" Variant="Variant.Flat" Shade="Shade.Lighter" Style="margin-bottom: 1rem;">
+                        Charts PDF Only Available for U.S Airports.
+                    </RadzenAlert>
+                    <RadzenCard Style="padding: 1rem; margin-top: 0.5rem;">
+                        <RadzenRow>
+                            @{
+                                var skyVectorRouteUrl = $"http://skyvector.com/?fpl={_flightPlanFixes}";
+                                var skyVectorOriginUrl = $"https://skyvector.com/api/airportSearch?query={_originParameters.FirstOrDefault()?.IcaoCode}";
+                                var skyVectorArrivalUrl = $"https://skyvector.com/api/airportSearch?query={_destinationParameters.FirstOrDefault()?.IcaoCode}";
+                            }
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Route</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@skyVectorRouteUrl">View Route on SkyVector</RadzenLink>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Departure Charts</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@skyVectorOriginUrl">View Departure Charts on SkyVector</RadzenLink>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                    <b>Arrival Charts</b>
+                                </RadzenText>
+                                <br/>
+                                <RadzenLink Target="_blank" Path="@skyVectorArrivalUrl">View Arrival Charts on SkyVector</RadzenLink>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenCard>
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenCard>
+
+        <br/>
+
+        <!-- Aircraft Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Aircraft Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_aircraftDataList" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="AircraftData" Property="Name" Title="Aircraft"/>
+                    <RadzenDataGridColumn TItem="AircraftData" Property="IcaoCode" Title="ICAO"/>
+                    <RadzenDataGridColumn TItem="AircraftData" Property="FuelFactor" Title="Fuel Factor"/>
+                    <RadzenDataGridColumn TItem="AircraftData" Property="MaxPassengers" Title="Max Passengers"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Weight Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Weight Parameters</RadzenText>
+        <br/>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_weightParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: small">Unit: @_parameterDataList[0].Units</RadzenText>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="PaxCount" Title="Total Passengers"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="Cargo" Title="Cargo Weight"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="EstZfw" Title="Zero Fuel Weight"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="EstRamp" Title="Ramp Weight"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Fuel Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Fuel Parameters</RadzenText>
+        <br/>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_fuelDataList" AllowVirtualization="true">
+                <Columns>
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: small">Unit: @_parameterDataList[0].Units</RadzenText>
+                    <RadzenDataGridColumn TItem="FuelData" Property="PlanRamp" Title="Plan Fuel *"/>
+                    <RadzenDataGridColumn TItem="FuelData" Property="Taxi" Title="Plan Taxi Fuel"/>
+                    <RadzenDataGridColumn TItem="FuelData" Property="PlanTakeoff" Title="Plan Takeoff Fuel"/>
+                    <RadzenDataGridColumn TItem="FuelData" Property="MinTakeoff" Title="Min Takeoff Fuel"/>
+                    <RadzenDataGridColumn TItem="FuelData" Property="Reserve" Title="Reserve Fuel"/>
+                    <RadzenDataGridColumn TItem="FuelData" Property="PlanLanding" Title="Plan Landing Fuel"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Airplane Weight Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Aircraft Weight Parameters</RadzenText>
+        <br/>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_weightParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: small">Unit: @_parameterDataList[0].Units</RadzenText>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="Oew" Title="Operating Empty Weight"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="MaxTowStruct" Title="Max Tow Weight"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="MaxZfw" Title="Max Zero Fuel Weight"/>
+                    <RadzenDataGridColumn TItem="WeightParameters" Property="MaxLdw" Title="Max Landing Weight"/>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Time Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Time Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="@(_timeData)" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="TimeData" Title="Estimated Time Journey">
+                        <Template Context="data">
+                            @{
+                                var timeInSec = data.EstTimeEnroute;
+                                var hours = timeInSec / 3600;
+                                var remainingSeconds = timeInSec % 3600;
+                                var minutes = remainingSeconds / 60;
+                                var seconds = remainingSeconds % 60;
+                            }
+                            @($"{hours} Hours {minutes} Minutes {seconds} Seconds")
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="TimeData" Title="Estimated Reserve Fuel">
+                        <Template Context="data">
+                            @{
+                                var timeInSec = data.ReserveTime;
+                                var hours = timeInSec / 3600;
+                                var remainingSeconds = timeInSec % 3600;
+                                var minutes = remainingSeconds / 60;
+                                var seconds = remainingSeconds % 60;
+                            }
+                            @($"{hours} Hours {minutes} Minutes {seconds} Seconds")
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Fixes Parameters -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Fixes Parameters</RadzenText>
+        <RadzenCard>
+            <RadzenDataGrid AllowFiltering="false" AllowPaging="true" Data="_fixesParameters" AllowVirtualization="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="FixData" Property="Name" Title="Fixes"/>
+                    <RadzenDataGridColumn TItem="FixData" Property="AltitudeFeet" Title="Altitude"/>
+                    <RadzenDataGridColumn TItem="FixData" Property="IndicatedAirspeed" Title="Air Speed"/>
+                    <RadzenDataGridColumn TItem="FixData" Property="Mach" Title="Mach Speed"/>
+                    <RadzenDataGridColumn TItem="FixData" Property="Distance" Title="Distance Next Waypoint"/>
+                    <RadzenDataGridColumn TItem="FixData" Title="Vertical Speed">
+                        <Template Context="data">
+                            @{
+                                var distance = data.Distance;
+                                var groundSpeed = data.GroundSpeed;
+                                var currentAltitude = data.AltitudeFeet;
+                                var index = _fixesParameters.IndexOf(data);
+                                var nextAltitude = index + 1 <= _fixesParameters.Count - 1 ? _fixesParameters[index + 1].AltitudeFeet.ToString() : "0";
+                            }
+                            @VerticalSpeed(distance, groundSpeed, currentAltitude, double.Parse(nextAltitude))
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+        <br/>
+
+        <!-- Altitude and Air Speed Charts -->
+        <RadzenCard>
+            <RadzenRow>
+                <RadzenColumn SizeMD="6">
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                        <b>Altitude Graph</b>
+                    </RadzenText>
+                    <RadzenChart>
+                        <RadzenLineSeries TItem="FixData" Data="_fixesParameters" CategoryProperty="Name" ValueProperty="AltitudeFeet" RenderingOrder="1" Smooth="true" Title="Altitude">
+                            <RadzenCategoryAxis Visible="false"></RadzenCategoryAxis>
+                        </RadzenLineSeries>
+                    </RadzenChart>
+                </RadzenColumn>
+                <RadzenColumn SizeMD="6">
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                        <b>Air Speed Graph</b>
+                    </RadzenText>
+                    <RadzenChart>
+                        <RadzenLineSeries TItem="FixData" Data="_fixesParameters" CategoryProperty="Name" ValueProperty="IndicatedAirspeed" RenderingOrder="1" Smooth="true" Title="Air Speed">
+                            <RadzenCategoryAxis Visible="false"></RadzenCategoryAxis>
+                        </RadzenLineSeries>
+                    </RadzenChart>
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+        <br/>
+        <!-- Checklist -->
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Checklist</RadzenText>
+        <RadzenStack Class="rz-p-0 rz-p-md-12">
+            <RadzenCard Class="rz-p-4 rz-border-radius-5" Variant="Variant.Outlined">
+                <RadzenTree AllowCheckBoxes="true" Data="_categories">
+                    <RadzenTreeLevel TextProperty="CategoryName" ChildrenProperty="Items"/>
+                    <RadzenTreeLevel TextProperty="Name" HasChildren="@(product => false)"/>
+                </RadzenTree>
+            </RadzenCard>
+        </RadzenStack>
+        <br/>
+
+        <!-- Flight Plan PDF -->
+
+        var x = _pdfsData.FirstOrDefault();
+        if (x != null)
+        {
+            var pdfUrl = x.Directory + x.Pdfs.FirstOrDefault(pdfData => pdfData.PdfName == "PDF Document")?.PdfLink;
+            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Flight Plan PDF</RadzenText>
+            <RadzenCard Style="display: flex; justify-content: center; align-items: center; flex-direction: column;" class="rz-border-radius-2">
+                <RadzenRow Style="align-content: center; align-items: center; width: 100%;" AlignItems="AlignItems.Center">
+                    <RadzenColumn Style="align-content: center; align-items: center; text-align: center; width: 100%;">
+                        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                            <b>PDF</b>
+                        </RadzenText>
+                        <br/>
+                        <RadzenLink Path="@pdfUrl" Target="_blank">Click here to open in new tab</RadzenLink>
+                        <br/>
+                        <br/>
+                        <iframe class="pdf" src="@pdfUrl" width="1000" height="1000" style="display: block; margin: 0 auto;"></iframe>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+            <br/>
+        }
+    }
+
+    <!-- Maps -->
+    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">Maps</RadzenText>
+    <RadzenAccordion>
+        <Items>
+            <RadzenAccordionItem Text="Show Maps">
+                <RadzenCard>
+                    @foreach (var item in _imageDataList)
+                    {
+                        @foreach (var image in item.Maps)
+                        {
+                            <RadzenCard Style="display: flex; justify-content: center; align-items: center;">
+                                @{ var imagePath = item.Directory + "/" + image.Link; }
+                                <RadzenImage Path="@imagePath" Style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                            </RadzenCard>
+                        }
+                    }
+                </RadzenCard>
+            </RadzenAccordionItem>
+        </Items>
+    </RadzenAccordion>
+}

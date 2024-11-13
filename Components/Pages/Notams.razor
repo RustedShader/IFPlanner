@@ -1,0 +1,59 @@
+@page "/Notams"
+<PageTitle>Active Notams</PageTitle>
+@if (!_isInitialized)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    <div>
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+            <strong>NOTAMS</strong>
+        </RadzenText>
+        <div class="rz-mt-2">
+            @foreach (var item in _notamResults)
+            {
+                <RadzenCard class="rz-mb-2">
+                    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem" Class="rz-p-4">
+                        <RadzenStack Gap="0">
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Airport ICAO</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.icao</RadzenText>
+                            <br/>
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Title</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.title</RadzenText>
+                        </RadzenStack>
+                    </RadzenStack>
+                    <RadzenCard class="rz-background-color-primary-lighter rz-shadow-0 rz-border-radius-0 rz-p-8 rz-mt-2 rz-mb-2">
+                        <RadzenStack Orientation="Orientation.Vertical" Gap="1rem">
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Message</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.message</RadzenText>
+                            <br/>
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Lowest Altitude</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.floor feet</RadzenText>
+                            <br/>
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Highest Altitude</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.ceiling feet</RadzenText>
+                            <br/>
+                            <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+                                <b>Radius of Notam</b>
+                            </RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">@item.radius NM</RadzenText>
+                        </RadzenStack>
+                    </RadzenCard>
+                </RadzenCard>
+            }
+        </div>
+    </div>
+}

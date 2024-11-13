@@ -1,0 +1,173 @@
+@page "/AirplaneStats"
+<PageTitle>Aircraft Performance</PageTitle>
+@if (!_isInitialized)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    <RadzenAlert Text="This data is taken from Infinite Flight not applicable for real world !"  AlertStyle="AlertStyle.Warning" AllowClose="false"/>
+    @foreach (var item in _aircraftList)
+    {
+        <RadzenCard Style="margin-bottom: 1rem;" Class="rz-background-color-primary-lighter ">
+            <RadzenStack Gap="0.5rem">
+                <RadzenText TextStyle="TextStyle.Subtitle2">@item.name</RadzenText>
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween" Gap="1rem" Class="rz-background-color-primary-lighter rz-p-4 rz-border-radius-5">
+                    <RadzenStack Gap="0.25rem">
+                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-text-color-base-800">ICAO</RadzenText>
+                        <RadzenText Class="rz-text-color-base-900">@item.icao</RadzenText>
+                    </RadzenStack>
+                    <RadzenStack Gap="0.25rem">
+                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-text-color-base-800">Manufacturer</RadzenText>
+                        <RadzenText Class="rz-text-color-base-900">@item.manufacturer</RadzenText>
+                    </RadzenStack>
+                    <RadzenStack Gap="0.25rem">
+                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-text-color-base-800">Engines</RadzenText>
+                        <RadzenText Class="rz-text-color-base-900">@item.engines</RadzenText>
+                    </RadzenStack>
+                    <RadzenStack Gap="0.25rem">
+                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-text-color-base-800">Weight</RadzenText>
+                        <RadzenText Class="rz-text-color-base-900">@item.oew Kg</RadzenText>
+                    </RadzenStack>
+                    <RadzenStack Gap="0.25rem">
+                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-text-color-base-800">Production Status</RadzenText>
+                        <RadzenText Class="rz-text-color-base-900">@item.productionStatus</RadzenText>
+                    </RadzenStack>
+                </RadzenStack>
+            </RadzenStack>
+            <RadzenTabs Style="margin-top: 1rem;">
+                <Tabs>
+                    <RadzenTabsItem Text="General">
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Type</RadzenText>
+                                <RadzenText>@item.type</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Number of Engines</RadzenText>
+                                <RadzenText>@item.engineCount</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Length</RadzenText>
+                                <RadzenText>@item.length meters</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Wingspan</RadzenText>
+                                <RadzenText>@item.wingspan meters</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Wheelbase</RadzenText>
+                                <RadzenText>@item.wheelbase meters</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Performance">
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Approach Speed</RadzenText>
+                                <RadzenText>@item.approachSpeed knots</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Speed</RadzenText>
+                                <RadzenText>@item.maxSpeed knots</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Climb Rate</RadzenText>
+                                <RadzenText>@item.climbRate ft/min</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Descent Rate</RadzenText>
+                                <RadzenText>@item.descentRate ft/min</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Fuel Burn</RadzenText>
+                                <RadzenText>@item.fuelburn kg/hr</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Fuel</RadzenText>
+                                <RadzenText>@item.maxfuel kg</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Ceiling Altitude</RadzenText>
+                                <RadzenText>@item.serviceCeiling ft</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Cargo</RadzenText>
+                                <RadzenText>@item.maxcargo kg</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Passengers</RadzenText>
+                                <RadzenText>@item.maxpax</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="3">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Range</RadzenText>
+                                <RadzenText>@item.maxRange Nm</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Runway Requirements">
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Takeoff Distance</RadzenText>
+                                <RadzenText>@item.runwayRequirements.takeoff meters</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Landing Distance</RadzenText>
+                                <RadzenText>@item.runwayRequirements.landing meters</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Landing Weight</RadzenText>
+                                <RadzenText>@item.mlw kg</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Max Towing Weight</RadzenText>
+                                <RadzenText>@item.mtow kg</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Wake Turbulence</RadzenText>
+                                <RadzenText>@item.wakeTurbulenceCategory</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Environmental Impact">
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Co2 Emissions</RadzenText>
+                                <RadzenText>@item.environmentalImpact.co2Emissions</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Noise Level</RadzenText>
+                                <RadzenText>@item.environmentalImpact.noiseLevel dB</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Fuel Efficiency</RadzenText>
+                                <RadzenText>@item.fuelEfficiency</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Gap="0.5rem" JustifyContent="JustifyContent.Start" Class="rz-my-4">
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Thrust to weight Ratio</RadzenText>
+                                <RadzenText>@item.thrustToWeightRatio</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="4">
+                                <RadzenText TextStyle="TextStyle.Caption">Operating Cost</RadzenText>
+                                <RadzenText>@item.operatingCost USD/hr</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenTabsItem>
+                </Tabs>
+            </RadzenTabs>
+        </RadzenCard>
+        <br/>
+    }
+}

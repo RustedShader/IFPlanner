@@ -1,0 +1,24 @@
+@page "/"
+
+<PageTitle>Home</PageTitle>
+<div class="rz-display-flex rz-flex-column rz-align-items-center">
+ <RadzenText TextStyle="TextStyle.Overline" style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">Welcome to IFPlanner !</RadzenText>
+
+ <RadzenCard style="max-width: 800px; margin-bottom: 2rem;" class="rz-border-radius-2" Variant="Variant.Outlined">
+   <RadzenText TextStyle="TextStyle.Body1" style="margin-bottom: 1rem;">This is a web app built for creating flight plans for Infinite Flight and checking game stats. While it's currently in beta and may have bugs or limitations, I am continuously working on improving and adding new features.</RadzenText>
+   <RadzenText TextStyle="TextStyle.Body1" style="margin-bottom: 1rem;">If you have any suggestions or feature requests, please feel free to reach out to me at the Infinite Flight community my username is <RadzenLink Text="rustedshader" Path="https://community.infiniteflight.com/u/rustedshader" Target="_blank"/>.</RadzenText>
+ </RadzenCard>
+
+ <RadzenButton Text="Get Started" ButtonStyle="ButtonStyle.Primary" Style="margin-bottom: 2rem;" Click="@(args => OnClick())" />
+
+ <RadzenText TextStyle="TextStyle.Body2" class="rz-text-center" style="max-width: 600px; margin-bottom: 1rem;">Stay tuned for updates and enjoy the journey with IFPlanner!</RadzenText>
+
+ <RadzenText TextStyle="TextStyle.Caption" class="rz-text-center" style="max-width: 600px; margin-bottom: 1rem;">
+   <span>Credits & Thanks: </span>
+   <RadzenLink Text="Infinite Flight" Path="https://infiniteflight.com/" Target="_blank" Style="margin-right: 0.5rem;" />
+   <RadzenLink Text="SimBrief" Path="https://www.simbrief.com/" Target="_blank" Style="margin-right: 0.5rem;" />
+   <RadzenLink Text="OurAirports" Path="https://ourairports.com/" Target="_blank" Style="margin-right: 0.5rem;" />
+   <RadzenLink Text="IFATC" Path="https://if-atc.com/" Target="_blank" Style="margin-right: 0.5rem;" />
+   <RadzenLink Text="ChartFox" Path="https://chartfox.org/" Target="_blank"/>
+ </RadzenText>
+</div>

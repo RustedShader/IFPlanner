@@ -1,0 +1,122 @@
+@page "/UserStats"
+@using IFPlanner.Components.Models
+<PageTitle>Get User Stats !</PageTitle>
+@{
+    <RadzenCard Variant="Variant.Outlined">
+        <RadzenText Text="Search User Stats" TextStyle="TextStyle.Overline"/>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem">
+            <RadzenFormField AllowFloatingLabel="true" Text="Enter Username">
+                <RadzenTextBox @bind-Value="_userName"/>
+            </RadzenFormField>
+            <RadzenButton Icon="person_search" Click="GetUserData" Text="Search" ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit"/>
+        </RadzenStack>
+    </RadzenCard>
+    @if (_isInitialized != true)
+    {
+        <div class="rz-m-xl-0">
+            <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+        </div>
+    }
+    else
+    {
+        @if (_userStats.Any())
+        {
+            var item = _userStats.FirstOrDefault();
+            if (item != null)
+            {
+                <br/>
+                <RadzenCard>
+                    <RadzenStack Gap="1rem" AlignItems="AlignItems.Normal">
+                        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween" Gap="1rem" Class="rz-p-4 rz-background-color-primary-lighter rz-border-radius-1">
+                            <RadzenStack Gap="0">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Username</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1">
+                                    <b>@item.discourseUsername</b>
+                                </RadzenText>
+                            </RadzenStack>
+                            <RadzenStack Gap="0">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Grade</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1">
+                                    <b>@item.grade</b>
+                                </RadzenText>
+                            </RadzenStack>
+                            <RadzenStack Gap="0">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Virtual Organization</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1">
+                                    <b>@item.virtualOrganization</b>
+                                </RadzenText>
+                            </RadzenStack>
+                        </RadzenStack>
+                        <RadzenCard Class="rz-background-color-primary-lighter rz-shadow-0 rz-border-radius-0 rz-p-8">
+                            <RadzenRow RowGap="0" JustifyContent="JustifyContent.SpaceBetween">
+                                <RadzenColumn SizeMD="4">
+                                    <RadzenStack Gap="0.5rem">
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Total Xp</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.xp</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Flight Time</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.flightTime</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Online Flights</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.onlineFlights</b>
+                                        </RadzenText>
+                                    </RadzenStack>
+                                </RadzenColumn>
+                                <RadzenColumn SizeMD="4">
+                                    <RadzenStack Gap="0.5rem">
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Violations</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.violations</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Landings</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text -color-primary-darker">
+                                            <b>@item.landingCount</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">ATC Operations</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.atcOperations</b>
+                                        </RadzenText>
+                                    </RadzenStack>
+                                </RadzenColumn>
+                                <RadzenColumn SizeMD="4">
+                                    <RadzenStack Gap="0.5rem">
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Violations Level 1</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.violationCountByLevel.level1</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Violations Level 2</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.violationCountByLevel.level2</b>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker rz-mb-0">Violations Level 3</RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-darker">
+                                            <b>@item.violationCountByLevel.level3</b>
+                                        </RadzenText>
+                                    </RadzenStack>
+                                </RadzenColumn>
+                            </RadzenRow>
+                        </RadzenCard>
+                    </RadzenStack>
+                    <br/>
+                    <RadzenDataGrid TItem="InfiniteFlightApi.UserFlightData.UserFlight" Data="_userFlights">
+                        <Columns>
+                            <RadzenDataGridColumn Property="server" Title="Server" TItem="InfiniteFlightApi.UserFlightData.UserFlight"/>
+                            <RadzenDataGridColumn Property="originAirport" Title="Origin" TItem="InfiniteFlightApi.UserFlightData.UserFlight"/>
+                            <RadzenDataGridColumn Property="destinationAirport" Title="Destination" TItem="InfiniteFlightApi.UserFlightData.UserFlight"/>
+                            <RadzenDataGridColumn Property="landingCount" Title="Landings" TItem="InfiniteFlightApi.UserFlightData.UserFlight"/>
+                            <RadzenDataGridColumn Title="Violations" TItem="InfiniteFlightApi.UserFlightData.UserFlight">
+                                <Template Context="userFlights">
+                                    <RadzenText>@userFlights.violations.Count</RadzenText>
+                                </Template>
+                            </RadzenDataGridColumn>
+                        </Columns>
+                    </RadzenDataGrid>
+                </RadzenCard>
+            }
+        }
+    }
+
+}

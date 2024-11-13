@@ -1,0 +1,75 @@
+@page "/server-stats"
+@using IFPlanner.Components.Models
+
+
+<PageTitle>Server Stats</PageTitle>
+
+@if (_isInitialized != true)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    <RadzenStack JustifyContent="JustifyContent.Center" Gap="2rem" Class="rz-p-4">
+        <RadzenRow>
+            <RadzenColumn>
+                <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-darker">Active Players</RadzenText>
+                <RadzenCard Class="rz-background-color-primary-lighter rz-border-radius-1 rz-p-4" Variant="Variant.Outlined">
+                    <RadzenChart>
+                        <RadzenPieSeries TItem="InfiniteFlightApi.GetSessions.SessionInfo" Data="_sessionInfos" CategoryProperty="name" ValueProperty="userCount" Title="Online Users" Radius="100">
+                            <RadzenSeriesDataLabels Visible="true"/>
+                        </RadzenPieSeries>
+                    </RadzenChart>
+                </RadzenCard>
+            </RadzenColumn>
+            <RadzenColumn>
+                <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-darker">Active Aircraft</RadzenText>
+                <RadzenCard Class="rz-background-color-primary-lighter rz-border-radius-1 rz-p-4" Variant="Variant.Outlined">
+                    <RadzenChart>
+                        <RadzenPieSeries TItem="AirplaneInfo" Data="_airplaneValues" CategoryProperty="Name" ValueProperty="AirplaneCount" Title="Airplane Count" Radius="100">
+                            <RadzenSeriesDataLabels Visible="false"/>
+                        </RadzenPieSeries>
+                    </RadzenChart>
+                </RadzenCard>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenCard Class="rz-background-color-primary-lighter rz-border-radius-1 rz-p-4" Variant="Variant.Outlined">
+            <RadzenDataGrid TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Data="_combinedAirportStatusList" AllowSorting="true" AllowPaging="true" AllowVirtualization="true" AllowFiltering="true" FilterMode="FilterMode.Advanced" PageSize="10">
+                <Columns>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="serverType" Title="Server Type" Width="120px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Server Type</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="airportName" Title="Airport Name" Width="200px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Airport Name</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="airportIcao" Title="ICAO" Width="100px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">ICAO</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="inboundFlightsCount" Title="Inbound Flights" Width="120px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Inbound Flights</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="outboundFlightsCount" Title="Outbound Flights" Width="120px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Outbound Flights</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="InfiniteFlightApi.WorldStatus.AirportStatus" Property="atcFacilities.Count" Title="Active ATC" Width="100px">
+                        <HeaderTemplate>
+                            <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Active ATC</RadzenText>
+                        </HeaderTemplate>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenCard>
+    </RadzenStack>
+}

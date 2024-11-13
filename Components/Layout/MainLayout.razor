@@ -1,0 +1,76 @@
+@inherits LayoutComponentBase
+@implements IDisposable
+
+@if(_darkMode)
+{
+    <link href="css/material-dark-base.css" rel="stylesheet" />
+}
+else
+{
+    <link href="_content/Radzen.Blazor/css/material-base.css" rel="stylesheet" />
+}
+
+<RadzenComponents/>
+
+<RadzenLayout style="position: relative;grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body'">
+    <RadzenHeader>
+        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"/>
+            </RadzenColumn>
+            <RadzenColumn Size="7">
+                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="10">
+                    <RadzenButton Icon="monetization_on" Text="Donate" Click="() => NavigationManager.NavigateTo(_donationUrl)"/>
+                    @if (_darkMode)
+                    {
+                        <RadzenToggleButton Icon="light_mode" Click="@DarkModeToggleClick"/>
+                    }
+                    else
+                    {
+                        <RadzenToggleButton Icon="dark_mode" Click="@DarkModeToggleClick"/>
+                    }
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenHeader>
+    <RadzenSidebar Responsive="false" @bind-Expanded="@_sidebarExpanded" style="position: absolute; z-index: 3; width: 250px ; border-radius: 7px;">
+        @if (_darkMode)
+        {
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"/>
+            </RadzenColumn>
+        }
+        else
+        {
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick" Style="color: black"/>
+            </RadzenColumn>
+        }
+        <RadzenPanelMenu DisplayStyle="@(_sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
+            <RadzenPanelMenuItem Icon="home" Text="Home" Path=""/>
+            <RadzenPanelMenuItem Icon="assignment_turned_in" Text="Create Flightplan" Path="create-flight-plan"/>
+            <RadzenPanelMenuItem Icon="dns" Text="Server Stats" Path="server-stats"/>
+            <RadzenPanelMenuItem Icon="cell_tower" Text="Active Atis" Path="Atis"/>
+            <RadzenPanelMenuItem Icon="running_with_errors" Text="Notams" Path="Notams"/>
+            <RadzenPanelMenuItem Icon="flight_takeoff" Text="Discover Routes" Path="routes-to-fly"/>
+            <RadzenPanelMenuItem Icon="flight" Text="Aircraft Performance" Path="AirplaneStats"/>
+            <RadzenPanelMenuItem Icon="person_search" Text="User Info" Path="UserStats"/>
+            <RadzenPanelMenuItem Icon="travel_explore" Text="Airport Info" Path="AirportStats"/>
+        </RadzenPanelMenu>
+        @if (_sidebarExpanded)
+        {
+            <RadzenStack AlignItems="AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 12px" TextAlign="TextAlign.Center">@theTime UTC</RadzenText>
+                <RadzenText Text="IFPlanner v1.0.3" TextStyle="TextStyle.Caption" style="color: var(--rz-text-disabled-color);" TagName="TagName.P" TextAlign="TextAlign.Center"/>
+                <RadzenText Text="Last Updated 22 June 2024" TextStyle="TextStyle.Caption" style="color: var(--rz-text-disabled-color);" TagName="TagName.P" TextAlign="TextAlign.Center"/>
+            </RadzenStack>
+        }
+    </RadzenSidebar>
+    <RadzenBody>
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+                @Body
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+</RadzenLayout>

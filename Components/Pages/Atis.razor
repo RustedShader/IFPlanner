@@ -1,0 +1,25 @@
+@page "/Atis"
+<PageTitle>Active ATIS</PageTitle>
+@if (!_isInitialized)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    <div>
+        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">
+            <strong>Active ATIS</strong>
+        </RadzenText>
+        <br/>
+        <div class="rz-p-2">
+            @foreach (var item in _atisResponse)
+            {
+                <RadzenCard class="rz-background-color-primary-lighter rz-shadow-0 rz-border-radius-0 rz-mb-2">
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: medium">@item</RadzenText>
+                </RadzenCard>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,1270 @@
+{
+  "shortHaulScenicRoutes": [
+    {
+      "routeName": "Phuket to Krabi",
+      "originIcao": "VTSP",
+      "destinationIcao": "VTSG",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "Thai Airways",
+      "flightTime": "0.5 hours"
+    },
+    {
+      "routeName": "Barcelona to Ibiza",
+      "originIcao": "LEBL",
+      "destinationIcao": "LEIB",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Vueling",
+      "flightTime": "0.5 hours"
+    },
+    {
+      "routeName": "Madrid to Bilbao",
+      "originIcao": "LEMD",
+      "destinationIcao": "LEBB",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Iberia Express",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Athens to Santorini",
+      "originIcao": "LGAV",
+      "destinationIcao": "LGSR",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Aegean Airlines",
+      "flightTime": "0.5 hours"
+    },
+    {
+      "routeName": "Dubai to Muscat",
+      "originIcao": "OMDB",
+      "destinationIcao": "OOMS",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "FlyDubai",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Bangkok to Chiang Mai",
+      "originIcao": "VTBD",
+      "destinationIcao": "VTCN",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Thai Lion Air",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Moscow to St Petersburg",
+      "originIcao": "UUDD",
+      "destinationIcao": "ULLI",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Aeroflot",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Paris to Toulouse",
+      "originIcao": "LFPG",
+      "destinationIcao": "LFBO",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Air France",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Reykjavik to Akureyri",
+      "originIcao": "BIRK",
+      "destinationIcao": "BIAR",
+      "aircraft": "B737",
+      "aircraftModel": "Boeing 737-700",
+      "livery": "Icelandair",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Ibiza to Mallorca",
+      "originIcao": "LEIB",
+      "destinationIcao": "LEPA",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Vueling",
+      "flightTime": "0.6 hours"
+    },
+    {
+      "routeName": "Phuket to Koh Samui",
+      "originIcao": "VTSP",
+      "destinationIcao": "VTSM",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Bangkok Airways",
+      "flightTime": "0.8 hours"
+    },
+    {
+      "routeName": "Venice to Florence",
+      "originIcao": "LIPZ",
+      "destinationIcao": "LIRQ",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Alitalia",
+      "flightTime": "0.8 hours"
+    },
+    {
+      "routeName": "Oslo to Bergen",
+      "originIcao": "ENGM",
+      "destinationIcao": "ENBR",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Norwegian",
+      "flightTime": "0.8 hours"
+    },
+    {
+      "routeName": "Cairo to Luxor",
+      "originIcao": "HECA",
+      "destinationIcao": "HELX",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "EgyptAir",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Bali to Lombok",
+      "originIcao": "WADD",
+      "destinationIcao": "WADL",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Garuda Indonesia",
+      "flightTime": "0.5 hours"
+    },
+    {
+      "routeName": "Milan to Rome",
+      "originIcao": "LIMC",
+      "destinationIcao": "LIRF",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Alitalia",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Nice to Marseille",
+      "originIcao": "LFMN",
+      "destinationIcao": "LFML",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Air France",
+      "flightTime": "0.6 hours"
+    }
+  ],
+  "mediumHaulScenicRoutes": [
+    {
+      "routeName": "Queenstown to Sydney",
+      "originIcao": "NZQN",
+      "destinationIcao": "YSSY",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9",
+      "livery": "Air New Zealand",
+      "flightTime": "3.5 hours"
+    },
+    {
+      "routeName": "Innsbruck to Nice",
+      "originIcao": "LOWI",
+      "destinationIcao": "LFMN",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "Lufthansa",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Cape Town to Victoria Falls",
+      "originIcao": "FACT",
+      "destinationIcao": "FVFA",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Kulula",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "Maui to Honolulu",
+      "originIcao": "PHOG",
+      "destinationIcao": "PHNL",
+      "aircraft": "B712",
+      "aircraftModel": "Boeing 717-200",
+      "livery": "Hawaiian Airlines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Almaty to Bishkek",
+      "originIcao": "UAAA",
+      "destinationIcao": "UCFM",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "Air Astana",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "San Francisco to Los Angeles",
+      "originIcao": "KSFO",
+      "destinationIcao": "KLAX",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Alaska Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Bangkok to Siem Reap",
+      "originIcao": "VTBS",
+      "destinationIcao": "VDSR",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "Cambodia Angkor Air",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Cancun to Mexico City",
+      "originIcao": "MMUN",
+      "destinationIcao": "MMMX",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Aeromexico",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Barcelona to Madrid",
+      "originIcao": "LEBL",
+      "destinationIcao": "LEMD",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Vueling",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Mumbai to Goa",
+      "originIcao": "VABB",
+      "destinationIcao": "VOGO",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "IndiGo",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Seoul to Osaka",
+      "originIcao": "RKSI",
+      "destinationIcao": "RJBB",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Korean Air",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Dublin to Amsterdam",
+      "originIcao": "EIDW",
+      "destinationIcao": "EHAM",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "KLM",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Rome to Athens",
+      "originIcao": "LIRF",
+      "destinationIcao": "LGAV",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "Aegean Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "London to Edinburgh",
+      "originIcao": "EGLL",
+      "destinationIcao": "EGPH",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "British Airways",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Sydney to Melbourne",
+      "originIcao": "YSSY",
+      "destinationIcao": "YMML",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Qantas",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Frankfurt to Rome",
+      "originIcao": "EDDF",
+      "destinationIcao": "LIRF",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Lufthansa",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Bangkok to Kuala Lumpur",
+      "originIcao": "VTBS",
+      "destinationIcao": "WMKK",
+      "aircraft": "B739",
+      "aircraftModel": "Boeing 737-900",
+      "livery": "Thai Airways",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Los Angeles to Las Vegas",
+      "originIcao": "KLAX",
+      "destinationIcao": "KLAS",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Delta Air Lines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Dubai to Mumbai",
+      "originIcao": "OMDB",
+      "destinationIcao": "VABB",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Emirates",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "New York to Toronto",
+      "originIcao": "KJFK",
+      "destinationIcao": "CYYZ",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Air Canada",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "São Paulo to Buenos Aires",
+      "originIcao": "SBGR",
+      "destinationIcao": "SAEZ",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "LATAM Brasil",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "Tokyo to Seoul",
+      "originIcao": "RJTT",
+      "destinationIcao": "RKSS",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Asiana Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Moscow to Istanbul",
+      "originIcao": "UUEE",
+      "destinationIcao": "LTBA",
+      "aircraft": "B737",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Turkish Airlines",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "Singapore to Jakarta",
+      "originIcao": "WSSS",
+      "destinationIcao": "WIII",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Singapore Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Reykjavik to Bergen",
+      "originIcao": "BIRK",
+      "destinationIcao": "ENBR",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Icelandair",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "Santiago to Lima",
+      "originIcao": "SCEL",
+      "destinationIcao": "SPJC",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "LATAM Airlines",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "Oslo to Stockholm",
+      "originIcao": "ENGM",
+      "destinationIcao": "ESSA",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "SAS",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Helsinki to Tallinn",
+      "originIcao": "EFHK",
+      "destinationIcao": "EETN",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Finnair",
+      "flightTime": "0.5 hours"
+    },
+    {
+      "routeName": "Zurich to Vienna",
+      "originIcao": "LSZH",
+      "destinationIcao": "LOWW",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Austrian Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Copenhagen to Amsterdam",
+      "originIcao": "EKCH",
+      "destinationIcao": "EHAM",
+      "aircraft": "A319",
+      "aircraftModel": "Airbus A319",
+      "livery": "KLM",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Istanbul to Athens",
+      "originIcao": "LTBA",
+      "destinationIcao": "LGAV",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Turkish Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Buenos Aires to Montevideo",
+      "originIcao": "SAEZ",
+      "destinationIcao": "SUMU",
+      "aircraft": "B737",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Aerolineas Argentinas",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Sydney to Brisbane",
+      "originIcao": "YSSY",
+      "destinationIcao": "YBBN",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Qantas",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Bangkok to Hanoi",
+      "originIcao": "VTBS",
+      "destinationIcao": "VVNB",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Thai Airways",
+      "flightTime": "1.5 hours"
+    }
+  ],
+  "longHaulScenicRoutes": [
+    {
+      "routeName": "Sydney to Vancouver",
+      "originIcao": "YSSY",
+      "destinationIcao": "CYVR",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Qantas",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Tokyo to Los Angeles",
+      "originIcao": "RJTT",
+      "destinationIcao": "KLAX",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Japan Airlines",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "Johannesburg to London Heathrow",
+      "originIcao": "FAOR",
+      "destinationIcao": "EGLL",
+      "aircraft": "B744",
+      "aircraftModel": "Boeing 747-400",
+      "livery": "British Airways",
+      "flightTime": "11.5 hours"
+    },
+    {
+      "routeName": "New York to Hong Kong",
+      "originIcao": "KJFK",
+      "destinationIcao": "VHHH",
+      "aircraft": "B77L",
+      "aircraftModel": "Boeing 777-200LR",
+      "livery": "Cathay Pacific",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Los Angeles to Sydney",
+      "originIcao": "KLAX",
+      "destinationIcao": "YSSY",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Qantas",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "Dubai to New York",
+      "originIcao": "OMDB",
+      "destinationIcao": "KJFK",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "13 hours"
+    },
+    {
+      "routeName": "Singapore to London Heathrow",
+      "originIcao": "WSSS",
+      "destinationIcao": "EGLL",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Singapore Airlines",
+      "flightTime": "13.5 hours"
+    },
+    {
+      "routeName": "Los Angeles to Tokyo",
+      "originIcao": "KLAX",
+      "destinationIcao": "RJTT",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9",
+      "livery": "All Nippon Airways",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Tokyo to Sydney",
+      "originIcao": "RJAA",
+      "destinationIcao": "YSSY",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9",
+      "livery": "Qantas",
+      "flightTime": "9 hours"
+    },
+    {
+      "routeName": "New York to Paris",
+      "originIcao": "KJFK",
+      "destinationIcao": "LFPG",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Delta Air Lines",
+      "flightTime": "7 hours"
+    },
+    {
+      "routeName": "Los Angeles to Tokyo",
+      "originIcao": "KLAX",
+      "destinationIcao": "RJAA",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "American Airlines",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "London to Singapore",
+      "originIcao": "EGLL",
+      "destinationIcao": "WSSS",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Singapore Airlines",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Dubai to New York JFK",
+      "originIcao": "OMDB",
+      "destinationIcao": "KJFK",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Sydney to Los Angeles",
+      "originIcao": "YSSY",
+      "destinationIcao": "KLAX",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Qantas",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Hong Kong to London",
+      "originIcao": "VHHH",
+      "destinationIcao": "EGLL",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "British Airways",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Los Angeles to Auckland",
+      "originIcao": "KLAX",
+      "destinationIcao": "NZAA",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9",
+      "livery": "Air New Zealand",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "São Paulo to Madrid",
+      "originIcao": "SBGR",
+      "destinationIcao": "LEMD",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Iberia",
+      "flightTime": "10 hours"
+    },
+    {
+      "routeName": "Mumbai to New York JFK",
+      "originIcao": "VABB",
+      "destinationIcao": "KJFK",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Air India",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "London to Los Angeles",
+      "originIcao": "EGLL",
+      "destinationIcao": "KLAX",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "British Airways",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "New York to Seoul",
+      "originIcao": "KJFK",
+      "destinationIcao": "RKSI",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Korean Air",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "Paris to Singapore",
+      "originIcao": "LFPG",
+      "destinationIcao": "WSSS",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Air France",
+      "flightTime": "13 hours"
+    },
+    {
+      "routeName": "Sydney to Dubai",
+      "originIcao": "YSSY",
+      "destinationIcao": "OMDB",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Emirates",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Tokyo to London Heathrow",
+      "originIcao": "RJTT",
+      "destinationIcao": "EGLL",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Japan Airlines",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Hong Kong to New York",
+      "originIcao": "VHHH",
+      "destinationIcao": "KJFK",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Cathay Pacific",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Sydney to London Heathrow",
+      "originIcao": "YSSY",
+      "destinationIcao": "EGLL",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Qantas",
+      "flightTime": "18 hours"
+    },
+    {
+      "routeName": "Dubai to Los Angeles",
+      "originIcao": "OMDB",
+      "destinationIcao": "KLAX",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Emirates",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Singapore to San Francisco",
+      "originIcao": "WSSS",
+      "destinationIcao": "KSFO",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Singapore Airlines",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "London Heathrow to Sydney",
+      "originIcao": "EGLL",
+      "destinationIcao": "YSSY",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "British Airways",
+      "flightTime": "19 hours"
+    },
+    {
+      "routeName": "Seattle to Dubai",
+      "originIcao": "KSEA",
+      "destinationIcao": "OMDB",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "London to Beijing",
+      "originIcao": "EGLL",
+      "destinationIcao": "ZBAA",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "British Airways",
+      "flightTime": "10 hours"
+    },
+    {
+      "routeName": "Los Angeles to Sydney",
+      "originIcao": "KLAX",
+      "destinationIcao": "YSSY",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Qantas",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "Tokyo to San Francisco",
+      "originIcao": "RJTT",
+      "destinationIcao": "KSFO",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Japan Airlines",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "New York to Dubai",
+      "originIcao": "KJFK",
+      "destinationIcao": "OMDB",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Los Angeles to Sydney",
+      "originIcao": "KLAX",
+      "destinationIcao": "YSSY",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9",
+      "livery": "American Airlines",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "Singapore to New York",
+      "originIcao": "WSSS",
+      "destinationIcao": "KJFK",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Singapore Airlines",
+      "flightTime": "18 hours"
+    },
+    {
+      "routeName": "London to Tokyo",
+      "originIcao": "EGLL",
+      "destinationIcao": "RJTT",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "British Airways",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "Los Angeles to Shanghai",
+      "originIcao": "KLAX",
+      "destinationIcao": "ZSPD",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "China Eastern Airlines",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Sydney to London",
+      "originIcao": "YSSY",
+      "destinationIcao": "EGLL",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Qantas",
+      "flightTime": "20 hours"
+    },
+    {
+      "routeName": "New York to Tokyo",
+      "originIcao": "KJFK",
+      "destinationIcao": "RJTT",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "All Nippon Airways",
+      "flightTime": "13 hours"
+    },
+    {
+      "routeName": "Dubai to Los Angeles",
+      "originIcao": "OMDB",
+      "destinationIcao": "KLAX",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Emirates",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Tokyo to London",
+      "originIcao": "RJTT",
+      "destinationIcao": "EGLL",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Japan Airlines",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Los Angeles to Sydney",
+      "originIcao": "KLAX",
+      "destinationIcao": "YSSY",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Qantas",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "Singapore to San Francisco",
+      "originIcao": "WSSS",
+      "destinationIcao": "KSFO",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380",
+      "livery": "Singapore Airlines",
+      "flightTime": "15 hours"
+    }
+  ],
+   "busiestRoutes": [
+    {
+      "routeName": "Los Angeles to San Francisco",
+      "originIcao": "KLAX",
+      "destinationIcao": "KSFO",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Southwest Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "New York JFK to Miami",
+      "originIcao": "KJFK",
+      "destinationIcao": "KMIA",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "American Airlines",
+      "flightTime": "3 hours"
+    },
+    {
+      "routeName": "London Heathrow to Paris Charles de Gaulle",
+      "originIcao": "EGLL",
+      "destinationIcao": "LFPG",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "British Airways",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Tokyo Haneda to Osaka Kansai",
+      "originIcao": "RJTT",
+      "destinationIcao": "RJBB",
+      "aircraft": "B772",
+      "aircraftModel": "Boeing 777-200ER",
+      "livery": "All Nippon Airways",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Sydney to Melbourne",
+      "originIcao": "YSSY",
+      "destinationIcao": "YMML",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Qantas",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Dubai to Doha",
+      "originIcao": "OMDB",
+      "destinationIcao": "OTHH",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Qatar Airways",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "San Francisco to Seattle",
+      "originIcao": "KSFO",
+      "destinationIcao": "KSEA",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Alaska Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Beijing to Shanghai",
+      "originIcao": "ZBAA",
+      "destinationIcao": "ZSPD",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "China Eastern Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Hong Kong to Taipei",
+      "originIcao": "VHHH",
+      "destinationIcao": "RCTP",
+      "aircraft": "A333",
+      "aircraftModel": "Airbus A330-300",
+      "livery": "Cathay Pacific",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Chicago O'Hare to Atlanta",
+      "originIcao": "KORD",
+      "destinationIcao": "KATL",
+      "aircraft": "B739",
+      "aircraftModel": "Boeing 737-900ER",
+      "livery": "Delta Air Lines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Frankfurt to Munich",
+      "originIcao": "EDDF",
+      "destinationIcao": "EDDM",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320neo",
+      "livery": "Lufthansa",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Kuala Lumpur to Singapore",
+      "originIcao": "WMKK",
+      "destinationIcao": "WSSS",
+      "aircraft": "A333",
+      "aircraftModel": "Airbus A330-300",
+      "livery": "Singapore Airlines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Istanbul to Ankara",
+      "originIcao": "LTFM",
+      "destinationIcao": "LTAC",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Turkish Airlines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Mumbai to Delhi",
+      "originIcao": "VABB",
+      "destinationIcao": "VIDP",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "IndiGo",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Bangkok to Hong Kong",
+      "originIcao": "VTBD",
+      "destinationIcao": "VHHH",
+      "aircraft": "A333",
+      "aircraftModel": "Airbus A330-300",
+      "livery": "Thai Airways",
+      "flightTime": "2.5 hours"
+    },
+    {
+      "routeName": "Paris CDG to Toulouse",
+      "originIcao": "LFPG",
+      "destinationIcao": "LFBO",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Air France",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Johannesburg to Cape Town",
+      "originIcao": "FAOR",
+      "destinationIcao": "FACT",
+      "aircraft": "A333",
+      "aircraftModel": "Airbus A330-300",
+      "livery": "South African Airways",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "London Heathrow to New York JFK",
+      "originIcao": "EGLL",
+      "destinationIcao": "KJFK",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380-800",
+      "livery": "British Airways",
+      "flightTime": "8 hours"
+    },
+    {
+      "routeName": "Dubai to London Heathrow",
+      "originIcao": "OMDB",
+      "destinationIcao": "EGLL",
+      "aircraft": "B777",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "7 hours"
+    },
+    {
+      "routeName": "Hong Kong to London Heathrow",
+      "originIcao": "VHHH",
+      "destinationIcao": "EGLL",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Cathay Pacific",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Los Angeles to Sydney Kingsford Smith",
+      "originIcao": "KLAX",
+      "destinationIcao": "YSSY",
+      "aircraft": "B789",
+      "aircraftModel": "Boeing 787-9 Dreamliner",
+      "livery": "Qantas",
+      "flightTime": "14 hours"
+    },
+    {
+      "routeName": "Frankfurt to Singapore Changi",
+      "originIcao": "EDDF",
+      "destinationIcao": "WSSS",
+      "aircraft": "A388",
+      "aircraftModel": "Airbus A380-800",
+      "livery": "Lufthansa",
+      "flightTime": "12 hours"
+    },
+    {
+      "routeName": "Newark to Mumbai",
+      "originIcao": "KEWR",
+      "destinationIcao": "VABB",
+      "aircraft": "B777",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Air India",
+      "flightTime": "15 hours"
+    },
+    {
+      "routeName": "Paris CDG to San Francisco",
+      "originIcao": "LFPG",
+      "destinationIcao": "KSFO",
+      "aircraft": "A359",
+      "aircraftModel": "Airbus A350-900",
+      "livery": "Air France",
+      "flightTime": "11 hours"
+    },
+    {
+      "routeName": "Doha to Dallas-Fort Worth",
+      "originIcao": "OTHH",
+      "destinationIcao": "KDFW",
+      "aircraft": "B777",
+      "aircraftModel": "Boeing 777-200LR",
+      "livery": "Qatar Airways",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Dubai to Houston George Bush",
+      "originIcao": "OMDB",
+      "destinationIcao": "KIAH",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Emirates",
+      "flightTime": "16 hours"
+    },
+    {
+      "routeName": "Auckland Intl to Doha",
+      "originIcao": "NZAA",
+      "destinationIcao": "OTHH",
+      "aircraft": "B77W",
+      "aircraftModel": "Boeing 777-300ER",
+      "livery": "Qatar Airways",
+      "flightTime": "18 hours"
+    },
+    {
+      "routeName": "Hong Kong to Shanghai",
+      "originIcao": "VHHH",
+      "destinationIcao": "ZSPD",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "Cathay Pacific",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Singapore to Kuala Lumpur",
+      "originIcao": "WSSS",
+      "destinationIcao": "WMKK",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Singapore Airlines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Paris to London",
+      "originIcao": "LFPG",
+      "destinationIcao": "EGLL",
+      "aircraft": "A320",
+      "aircraftModel": "Airbus A320",
+      "livery": "Air France",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Beijing to Shanghai",
+      "originIcao": "ZBAA",
+      "destinationIcao": "ZSPD",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "China Eastern Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Los Angeles to San Francisco",
+      "originIcao": "KLAX",
+      "destinationIcao": "KSFO",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "American Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "New York JFK to Washington D.C.",
+      "originIcao": "KJFK",
+      "destinationIcao": "KDCA",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "American Airlines",
+      "flightTime": "1.5 hours"
+    },
+    {
+      "routeName": "Tokyo to Osaka",
+      "originIcao": "RJTT",
+      "destinationIcao": "RJOO",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Japan Airlines",
+      "flightTime": "1 hour"
+    },
+    {
+      "routeName": "Chicago to New York JFK",
+      "originIcao": "KORD",
+      "destinationIcao": "KJFK",
+      "aircraft": "A321",
+      "aircraftModel": "Airbus A321",
+      "livery": "American Airlines",
+      "flightTime": "2 hours"
+    },
+    {
+      "routeName": "Sydney to Brisbane",
+      "originIcao": "YSSY",
+      "destinationIcao": "YBBN",
+      "aircraft": "B738",
+      "aircraftModel": "Boeing 737-800",
+      "livery": "Qantas",
+      "flightTime": "1.5 hours"
+    },
+     {
+       "routeName": "Los Angeles to San Francisco",
+       "originIcao": "KLAX",
+       "destinationIcao": "KSFO",
+       "aircraft": "B738",
+       "aircraftModel": "Boeing 737-800",
+       "livery": "Southwest Airlines",
+       "flightTime": "1.5 hours"
+     },
+     {
+       "routeName": "New York JFK to Miami",
+       "originIcao": "KJFK",
+       "destinationIcao": "KMIA",
+       "aircraft": "A321",
+       "aircraftModel": "Airbus A321",
+       "livery": "American Airlines",
+       "flightTime": "3 hours"
+     },
+     {
+       "routeName": "London Heathrow to Paris Charles de Gaulle",
+       "originIcao": "EGLL",
+       "destinationIcao": "LFPG",
+       "aircraft": "A320",
+       "aircraftModel": "Airbus A320neo",
+       "livery": "British Airways",
+       "flightTime": "1 hour"
+     },
+     {
+       "routeName": "Tokyo Haneda to Osaka Kansai",
+       "originIcao": "RJTT",
+       "destinationIcao": "RJBB",
+       "aircraft": "B772",
+       "aircraftModel": "Boeing 777-200ER",
+       "livery": "All Nippon Airways",
+       "flightTime": "2 hours"
+     },
+     {
+       "routeName": "Sydney to Melbourne",
+       "originIcao": "YSSY",
+       "destinationIcao": "YMML",
+       "aircraft": "B738",
+       "aircraftModel": "Boeing 737-800",
+       "livery": "Qantas",
+       "flightTime": "1.5 hours"
+     },
+     {
+       "routeName": "Dubai to Doha",
+       "originIcao": "OMDB",
+       "destinationIcao": "OTHH",
+       "aircraft": "A359",
+       "aircraftModel": "Airbus A350-900",
+       "livery": "Qatar Airways",
+       "flightTime": "1.5 hours"
+     },
+     {
+       "routeName": "San Francisco to Seattle",
+       "originIcao": "KSFO",
+       "destinationIcao": "KSEA",
+       "aircraft": "B738",
+       "aircraftModel": "Boeing 737-800",
+       "livery": "Alaska Airlines",
+       "flightTime": "2 hours"
+     },
+     {
+       "routeName": "Beijing to Shanghai",
+       "originIcao": "ZBAA",
+       "destinationIcao": "ZSPD",
+       "aircraft": "A320",
+       "aircraftModel": "Airbus A320neo",
+       "livery": "China Eastern Airlines",
+       "flightTime": "2 hours"
+     },
+     {
+       "routeName": "Hong Kong to Taipei",
+       "originIcao": "VHHH",
+       "destinationIcao": "RCTP",
+       "aircraft": "A333",
+       "aircraftModel": "Airbus A330-300",
+       "livery": "Cathay Pacific",
+       "flightTime": "2 hours"
+     },
+     {
+       "routeName": "Chicago O'Hare to Atlanta",
+       "originIcao": "KORD",
+       "destinationIcao": "KATL",
+       "aircraft": "B739",
+       "aircraftModel": "Boeing 737-900ER",
+       "livery": "Delta Air Lines",
+       "flightTime": "2 hours"
+     }
+   ]
+}

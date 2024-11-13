@@ -1,0 +1,95 @@
+@page "/AirportStats"
+<PageTitle>Get Airport Stats !</PageTitle>
+<RadzenCard Class="rz-mx-auto" Variant="Variant.Outlined">
+    <RadzenStack Gap="1rem" JustifyContent="JustifyContent.Center">
+        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker" Text="Search Aiport Stats"/>
+        <RadzenFormField Text="Airport ICAO" AllowFloatingLabel="true">
+            <RadzenTextBox @bind-Value="_airportIcao" MaxLength="4" @oninput="HandleInput" Placeholder="Enter Airport ICAO" Class="rz-text-uppercase"  />
+        </RadzenFormField>
+        <RadzenButton Icon="search" Text="Search" Click="GetAirportsData" ButtonStyle="ButtonStyle.Primary" />
+    </RadzenStack>
+</RadzenCard>
+@if (_isInitialized != true)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" />
+    </div>
+}
+else
+{
+    @if (_airportInfos != null && _airportInfos.Any())
+    {
+        var item = _airportInfos.FirstOrDefault();
+        @if (item != null)
+        {
+            <br/>
+            <RadzenCard>
+                <RadzenCard Class="rz-background-color-primary-lighter">
+                    <RadzenStack JustifyContent="JustifyContent.Normal" Gap="1rem">
+                        <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-lighter">Airport Details</RadzenText>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport Name</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Name</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Available Frequencies</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.FrequenciesCount.ToString()</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport ICAO</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Icao</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport IATA</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Iata</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport City</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.City</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport Country</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Country.Name</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport Elevation</RadzenText>
+                                <RadzenText TextStyle ="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Elevation.ToString()</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Airport Timezone</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@item.Timezone</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Jet Bridges</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@(item.HasJetbridges ? "Available" : "Not Available")</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">3D Buildings</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@(item.Has3dBuildings ? "Available" : "Not Available")</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow RowGap="1rem">
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Safedock units</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@(item.HasSafedockUnits ? "Available" : "Not Available")</RadzenText>
+                            </RadzenColumn>
+                            <RadzenColumn SizeSM="6">
+                                <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-lighter">Taxiway Routing Capabilities</RadzenText>
+                                <RadzenText TextStyle="TextStyle.Body1" Class="rz-text-color-primary-lighter">@(item.HasTaxiwayRouting ? "Available" : "Not Available")</RadzenText>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenStack>
+                </RadzenCard>
+            </RadzenCard>
+        }
+    }
+}

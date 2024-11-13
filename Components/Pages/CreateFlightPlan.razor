@@ -1,0 +1,171 @@
+@page "/create-flight-plan"
+
+<script type="text/javascript" src="simbrief.apiv1.js"></script>
+<script src="simbrief.apiv1.php"></script>
+
+<PageTitle>Create Flight Plan</PageTitle>
+
+@if (!_isInitialized)
+{
+    <div class="rz-m-xl-0">
+        <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate"/>
+    </div>
+}
+else
+{
+    <RadzenTemplateForm TItem="dynamic" Style="height: 750px;" id="sbapiform" Submit="@OnSubmit" InvalidSubmit="@OnIvalidSubmit">
+        <RadzenCard Class="rz-my-12 rz-mx-auto" Style="max-width: 600px;">
+            <RadzenStack Gap="1rem" Class="rz-p-4">
+                <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-darker">Departure Airport</RadzenText>
+                <RadzenStack Gap="0.5rem">
+                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">ICAO *</RadzenText>
+                    <RadzenTextBox Name="orig" @bind-Value="SelectedAirportIcaoDeparture" @oninput="@(args => HandleInputAsync(args, true))" @onchange="@(args => HandleInputChangeAsync(args, true))" MaxLength="4" Class="rz-text-uppercase"/>
+                    <RadzenRequiredValidator Component="orig" Text="Departure Airport is required" Style="position: absolute"/>
+                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Airport Name</RadzenText>
+                    <RadzenDropDown Data="_airportDataList" TextProperty="AirportName" ValueProperty="AirportIdent" @bind-Value="SelectedAirportIcaoDeparture"  AllowFiltering="true"  AllowVirtualization="true"   Change="() => SearchAirport(SelectedAirportIcaoDeparture,true)" />
+
+                    @if (_heIndentsDeparture != null && !string.IsNullOrEmpty(SelectedAirportIcaoDeparture))
+                    {
+                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Departure Runways</RadzenText>
+                        <RadzenDropDown Name="origrwy" TValue="string" Data="_heIndentsDeparture" @bind-Value="_selectedHeIdentDeparture" AllowVirtualization="true"/>
+                        <RadzenText>@RunwayInfoDeparture(SelectedAirportIcaoDeparture,_selectedHeIdentDeparture)</RadzenText>
+                    }
+                </RadzenStack>
+
+                <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-darker">Arrival Airport</RadzenText>
+                <RadzenStack Gap="0.5rem">
+                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">ICAO *</RadzenText>
+                    <RadzenTextBox Name="dest" @bind-Value="SelectedAirportIcaoArrival" @oninput="@(args => HandleInputAsync(args, false))" @onchange="@(args => HandleInputChangeAsync(args, false))" MaxLength="4" Class="rz-text-uppercase"/>
+                    <RadzenRequiredValidator Component="dest" Text="Arrival Airport is required" Popup="true" Style="position: absolute"/>
+                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Airport Name</RadzenText>
+                    <RadzenDropDown Data="_airportDataList" TextProperty="AirportName" ValueProperty="AirportIdent" @bind-Value="SelectedAirportIcaoArrival" AllowFiltering="true" AllowVirtualization="true"  Change="() => SearchAirport(SelectedAirportIcaoArrival,false)"/>
+
+                    @if (_heIndentsArrival != null && !string.IsNullOrEmpty(SelectedAirportIcaoArrival))
+                    {
+                        <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Arrival Runways</RadzenText>
+                        <RadzenDropDown Name="destrwy" TValue="string" Data="@_heIndentsArrival" @bind-Value="@_selectedHeIdentArrival" AllowVirtualization="true"/>
+                        <RadzenText>@RunwayInfoArrival(SelectedAirportIcaoArrival,_selectedHeIdentArrival)</RadzenText>
+                    }
+                </RadzenStack>
+                
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    @if (_autoAltitude)
+                    {
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker">Cruising Altitude: Auto</RadzenText>
+                    }
+                    else
+                    {
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker">Cruising Altitude: @_altitude feets</RadzenText>
+                    }
+                    @if (_autoAltitude == false)
+                    {
+                    <RadzenSlider TValue="int" Step="100" Min="1000" Max="60000" @bind-Value="@_altitude" Style="width: 530px;"/>
+                    <input type="hidden" name="fl" value="@_altitude"/>
+                    }
+                    <RadzenSwitch @bind-Value="@_autoAltitude"/>
+                </RadzenStack>
+
+                <RadzenText TextStyle="TextStyle.H6" Class="rz-text-color-primary-darker">Aircraft *</RadzenText>
+                <RadzenStack Gap="0.5rem">
+                    <RadzenDropDown Name="type" TValue="string" Data="_aircraftNames" TextProperty="Name" ValueProperty="Id" @bind-Value="SelectedAircraftIcao" AllowVirtualization="true"/>
+                    <RadzenRequiredValidator Component="type" Text="Aircraft is required" Popup="true" Style="position: absolute"/>
+
+                    @if (!string.IsNullOrEmpty(SelectedAircraftIcao))
+                    {
+                        var x = _aircraftData.Where(f => f.Icao == SelectedAircraftIcao).ToList();
+                        @if (x.Any())
+                        {
+                            var y = x.FirstOrDefault();
+                            if (y != null)
+                            {
+                                var jsonValue = $"{{\"maxpax\": \"{y.MaxPax}\",\"oew\": {kilogram_to_pound_thousands(y.Oew)},\"mzfw\": {kilogram_to_pound_thousands(y.Mzfw)},\"mtow\": {kilogram_to_pound_thousands(y.Mtow)},\"mlw\": {kilogram_to_pound_thousands(x[0].Mlw)},\"maxfuel\":{kilogram_to_pound_thousands(y.MaxFuel)},\"icao\":\"{y.Icao}\",\"name\":\"{y.Name}\",\"engines\":\"{y.Engines}\",\"paxwgt\": 170,\"bagwgt\": 66}}";
+                                <input type="hidden" name="acdata" value="@jsonValue"/>
+                            } 
+                        }
+                    }
+                </RadzenStack>
+
+                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker" Text="Units"/>
+                <RadzenDropDown TValue="string" Data="@_fuelParameters" AllowVirtualization="true" Value="@_unit" Change="@(args => _unit = $"{args}")"/>
+                <input type="hidden" name="units" value="@_unit"/>
+                
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    @if (_autoReserveFuel)
+                    {
+                        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker">Reserve Fuel: Auto </RadzenText>
+                    }
+                    else
+                    {
+                        <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker">Reserve Fuel: @reserveFuel Minutes</RadzenText>
+                    }
+                    @if (_autoReserveFuel == false)
+                    {
+                        <RadzenSlider TValue="int" Step="5" Min="0" Max="300" @bind-Value="@reserveFuel" Style="width: 530px;"/>
+                        <input type="hidden" name="resvrule" value="@reserveFuel"/>
+                    }
+                    <RadzenSwitch @bind-Value="@_autoReserveFuel"/>
+                </RadzenStack>
+                @if (!string.IsNullOrEmpty(SelectedAircraftIcao))
+                {
+                    var x = _aircraftData.Where(f => f.Icao == SelectedAircraftIcao).ToList();
+                    @if (x.Any())
+                    {
+                        var y = x.FirstOrDefault();
+                        if (y != null)
+                        {
+                            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                                @if (_autoPassengerCount)
+                                {
+                                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Passengers Count: Auto</RadzenText>
+                                }
+                                else
+                                {
+                                    <RadzenText TextStyle="TextStyle.Overline" Class="rz-text-color-primary-darker">Passengers Count: @passengers</RadzenText>
+                                }
+                                @if (_autoPassengerCount == false)
+                                {
+                                    <RadzenSlider TValue="int" Name="pax" Step="5" Min="0" Max="@y.MaxPax" @bind-Value="@passengers" Style="width: 530px;"/>
+                                    <input type="hidden" name="pax" value="@passengers"/>
+                                }
+                                <RadzenSwitch @bind-Value="@_autoPassengerCount"/>
+                            </RadzenStack>
+                        }
+                    }
+                }
+
+                <RadzenCard Variant="Variant.Outlined">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem">
+                        <RadzenIcon Icon="flight_takeoff" Style="font-size: 2rem;" />
+                        <RadzenStack Gap="0.5rem">
+                            <RadzenText TextStyle="TextStyle.H6">Flight Plan Format Info</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1">
+                                Use JBU format for the following in the flight plan PDF:
+                            </RadzenText>
+                            <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem">
+                                <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="Flaps" />
+                                <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="V1" />
+                                <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="V2" />
+                                <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="VR" />
+                            </RadzenStack>
+                        </RadzenStack>
+                    </RadzenStack>
+                </RadzenCard>
+                <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker" Text="Plan Format"/>
+                <RadzenDropDown TValue="string" Data="_flightPlanFormat" AllowVirtualization="true" Value="@_planFormat" Change="@(args => _planFormat = $"{args}")"/>
+                <input type="hidden" name="planformat" value="@_planFormat"/>
+                
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenText TextStyle="TextStyle.Overline" Style="font-size: 11px; font-weight: bold" Class="rz-text-color-primary-darker" Text="Plan Step climb"/>
+                    <RadzenSwitch @bind-Value="_planStepClimb"/>
+                    <input type="hidden" name="stepclimbs" value="@Convert.ToInt32(_planStepClimb)"/>
+                </RadzenStack>
+                <input type="hidden" name="tlr" value="1"/>
+                <input type="hidden" name="navlog" value="1"/>
+                <input type="hidden" name="maps" value="detail"/>
+                <RadzenStack JustifyContent="JustifyContent.Center" Class="rz-mt-4">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="flight_takeoff" Text="Generate" Variant="Variant.Flat" Click="@SimbriefSubmit" IsBusy="false" Style="font-style: oblique"/>
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenCard>
+    </RadzenTemplateForm>
+}
